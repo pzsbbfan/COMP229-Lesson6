@@ -1,0 +1,59 @@
+<!-- main nav-->
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-fixed-top bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">COMP229</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto">
+      
+          
+          <li class="nav-item">
+            <% if(title =="Home"){%> 
+            <a class="nav-link active" aria-current="page" href="/home"><img src="/Assets/images/icon.png" style="height:20px; width: 20px;" alt=".."> Home </a><%}
+            else {%> <a class="nav-link" aria-current="page" href="/home"><img src="/Assets/images/icon.png" style="height:20px; width: 20px;" alt=".."> Home </a><%}%>
+          </li>
+
+          <li class="nav-item">
+            <% if(title =="About"){%> 
+            <a class="nav-link active" aria-current="page" href="/about"><img src="/Assets/images/icon2.png" style="height:20px; width: 20px;" alt=".."> About </a><%}
+            else {%> <a class="nav-link" aria-current="page" href="/about"><img src="/Assets/images/icon2.png" style="height:20px; width: 20px;" alt=".."> About </a><%}%>
+          </li>
+
+          <li class="nav-item">
+            <% if(title =="Services"){%> 
+            <a class="nav-link active" aria-current="page" href="/services"><img src="/Assets/images/icon3.png" style="height:20px; width: 20px;" alt=".."> Services </a><%}
+            else {%> <a class="nav-link" aria-current="page" href="/services"><img src="/Assets/images/icon3.png" style="height:20px; width: 20px;" alt=".."> Services </a><%}%>
+          </li>
+
+          <li class="nav-item">
+            <% if(title =="Projects"){%> 
+            <a class="nav-link active" aria-current="page" href="/projects"><img src="/Assets/images/icon4.png" style="height:20px; width: 20px;" alt=".."> Projects </a><%}
+            else {%> <a class="nav-link" aria-current="page" href="/projects"><img src="/Assets/images/icon4.png" style="height:20px; width: 20px;" alt=".."> Projects </a><%}%>
+          </li>
+
+          <li class="nav-item">
+            <% if(title =="Contact"){%> 
+            <a class="nav-link active" aria-current="page" href="/contact"><img src="/Assets/images/icon5.png" style="height:20px; width: 20px;" alt=".."></i> Contact </a><%}
+            else {%> <a class="nav-link" aria-current="page" href="/contact"><img src="/Assets/images/icon5.png" style="height:20px; width: 20px;" alt=".."> Contact </a><%}%>
+          </li>
+
+          <li class="nav-item">
+            <% if(title =="Books"){%> 
+            <a class="nav-link active" aria-current="page" href="/book-list"><img src="/Assets/images/icon3.png" style="height:20px; width: 20px;" alt=".."> Books </a><%}
+            else {%> <a class="nav-link" aria-current="page" href="/book-list"><img src="/Assets/images/icon3.png" style="height:20px; width: 20px;" alt=".."> Books </a><%}%>
+          </li>
+
+          <% if(typeof displayName == 'string' && displayName) {%>
+          <li class="navbar-text"><i class="fas fa-lg fa-user"></i>Welcome, <%= displayName %></li>
+          <li class="nav-item"><a href="/logout" class="nav-link">
+            <i class="fas fa-lg fa-sign-out-alt"></i> Logout</a></li>
+          <%} else {%>
+          <li class="nav-item"><a href="/login" class="nav-link">
+          <i class="fas fa-lg fa-sign-in-alt"></i> Login</a></li>
+          <%} %>
+
+      </div>
+    </div>
+  </nav>
