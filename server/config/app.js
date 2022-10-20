@@ -76,6 +76,8 @@ let User = userModel.User;
 
 //implement a User Authentication Strategy
 passport.use(User.createStrategy());
+
+
 // serialize and deserialize the user info
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
