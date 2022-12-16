@@ -3,6 +3,7 @@ let router = express.Router();
 let mongoose = require('mongoose');
 //Create reference to the model
 let Book = require('../models/book');
+let jwt = require('jsonwebtoken');
 
 
 module.exports.displayBookList = (req,res,next)=>{
@@ -14,23 +15,29 @@ module.exports.displayBookList = (req,res,next)=>{
         else
         {
             //console.log(BookList);
+            /*
             res.render('book/list',
             {title: 'Books', 
             BookList: bookList, 
             displayName: req.user ? req.user.displayName:''
             });
+            */
+           res.json(bookList);
         }
     });
 }
 
 module.exports.displayAddPage = (req,res,next)=>{
+    /*
     res.render('book/add', 
     {title: 'Add Book',
     displayName: req.user ? req.user.displayName:''
     });
+    */
+   res.json({success:true, msg:'Successfully Displayed Add Page!'});
 }
 
-module.exports.processAddpage = (req,res,next)=>{
+module.exports.processAddPage = (req,res,next)=>{
     let newBook = Book({
         "name": req.body.name,
         "author" : req.body.author,
@@ -45,7 +52,8 @@ module.exports.processAddpage = (req,res,next)=>{
         }
         else{
             //refresh the book list
-            res.redirect('/book-list');
+            //res.redirect('/book-list');
+            res.json({success:true, msg:'Successfully Added New Book!'});
         }
         
     });
@@ -63,11 +71,14 @@ module.exports.displayEditPage = (req,res,next)=>{
         else
         {
             //show the edit view
+            /*
             res.render('book/edit', 
             {title:'Edit Book', 
             book:bookToEdit,
             displayName: req.user ? req.user.displayName:''
-            }); 
+            });
+            */
+           res.json({success:true, msg:'Successfully Displayed Book to Edit',book:bookToEdit}); 
         }
     });
 }
@@ -91,7 +102,8 @@ module.exports.processEditPage = (req,res,next)=>{
         }
         else{
             //refresh book list
-            res.redirect('/book-list');
+            //res.redirect('/book-list');
+            res.json({success:true, msg:'Successfully Edited Book', book: updatedBook});
         }
     });
 }
@@ -99,14 +111,15 @@ module.exports.processEditPage = (req,res,next)=>{
 module.exports.performDelete = (req,res,next)=>{
     let id = req.params.id;
 
-    Book.remove({_id:id},(err)=>{
+    Book.deleteOne({_id:id},(err)=>{
         if (err){
             console.log(err);
             res.end;
         }
         else{
             //refresh book list
-            res.redirect('/book-list');
+            //res.redirect('/book-list');
+            res.json({success:true,msg:'Successfully Deleted Book'});
         }
     });
 }

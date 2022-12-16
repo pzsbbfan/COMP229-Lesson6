@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import { data } from 'jquery';
 import {Book} from './book.model';
+import { RestDataSource } from './rest.datasource';
 import { StaticDataSource } from './static.datasource';
 
 @Injectable()
@@ -9,7 +10,7 @@ export class BookRepository
     private books: Book[] = [];
     private authors:string[] = [];
     
-    constructor(private dataSource: StaticDataSource)
+    constructor(private dataSource: RestDataSource)
     {
         dataSource.getBooks().subscribe(data =>{
             this.books = data;
@@ -33,5 +34,30 @@ export class BookRepository
     getAuthors():string[]
     {
         return this.authors;
+    }
+
+
+    saveBook(savedBook:Book):void
+    {
+       
+        if(savedBook._id ===null|| savedBook._id ===0|| savedBook._id ===undefined)
+        {
+            this.dataSource.addBook(savedBook).subscribe(b=>{
+                this.books.push(savedBook);
+            });
+        }
+        else
+        {
+            this.dataSource.updateBook(savedBook).subscribe(book =>{
+                this.books.splice(this.books.findIndex(b=>b._id ===savedBook._id),1,savedBook);
+            });
+        }
+    }
+
+    deleteBook(deletedBookID:number):void
+    {
+        this.dataSource.deleteBook(deletedBookID).subscribe(book=>{
+            this.books.splice(this.books.findIndex(b=>b._id ===deletedBookID),1);
+        })
     }
 }

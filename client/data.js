@@ -3,7 +3,7 @@ module.exports = function(){
         "book-list":
         [
             {
-                id: 1,
+                _id: 1,
                 name: 'Dune',
                 author: 'Frank Herbert',
                 published: '1965',
@@ -11,7 +11,7 @@ module.exports = function(){
                 price: 68
               },
               {
-                id: 2,
+                _id: 2,
                 name: 'A God Can Do It',
                 author: 'John Banville',
                 published: '2022',
@@ -19,7 +19,7 @@ module.exports = function(){
                 price: 95.55
               },
               {
-                id: 3,
+                _id: 3,
                 name: 'The History Boy',
                 author: 'Giles Harvey',
                 published: '2022',

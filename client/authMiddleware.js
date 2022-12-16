@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const jwt = require('jsonwebtoken');
 const APP_SECRET = 'Secret';
 const USERNAME = 'admin';
@@ -6,7 +7,7 @@ const PASSWORD = '123456';
 const mappings = 
 {
     get:['/api/orders','/orders'],
-    post:['/api/book-list','/book-list','api/categories']
+    post:['/api/book-list','book-list','api/categories']
 }
 
 function requiresAuth(method,url)
@@ -44,6 +45,7 @@ module.exports = function(req,res,next)
             return;
         }
         catch(err)
+        // eslint-disable-next-line no-empty
         {
 
         }

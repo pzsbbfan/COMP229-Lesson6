@@ -62,8 +62,11 @@ export class CartLine{
     (
     public book:Book,
     public quantity: number
-    )
-    {
-        
-    }
-}
+    ){}
+    
+        get lineTotal():number
+        {
+            return this.quantity * this.book.price;
+        }
+
+} 
