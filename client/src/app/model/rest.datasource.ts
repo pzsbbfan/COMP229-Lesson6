@@ -32,7 +32,7 @@ export class RestDataSource
     {
         this.user = new User();
         //this.baseUrl =`${PROTOCOL}://${location.hostname}:${PORT}/api/`;
-        this.baseUrl =`https://comp229-bookstore1.onrender.com/api`;
+        this.baseUrl =`https://comp229-bookstore1.onrender.com/api/`;
 
     }
 
