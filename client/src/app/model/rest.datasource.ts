@@ -32,13 +32,13 @@ export class RestDataSource
     {
         this.user = new User();
         //this.baseUrl =`${PROTOCOL}://${location.hostname}:${PORT}/api/`;
-        this.baseUrl =`https://comp229-bookstore1.onrender.com/api/`;
+        this.baseUrl =`https://comp229-bookstore1.onrender.com/`;
 
     }
 
     getBooks(): Observable<Book[]>
     {
-        return this.http.get<Book[]>(this.baseUrl + 'book-list');
+        return this.http.get<Book[]>(this.baseUrl + 'api/book-list');
     } 
 
 
@@ -46,12 +46,12 @@ export class RestDataSource
     saveOrder(order:Order):Observable<Order>
     {
         console.log(JSON.stringify(order));
-        return this.http.post<Order>(this.baseUrl+'orders/add', order);
+        return this.http.post<Order>(this.baseUrl+'api/orders/add', order);
     }
 
     authenticate(user:User):Observable<any>
     {
-        return this.http.post<any>(this.baseUrl + 'login',user,this.httpOptions);
+        return this.http.post<any>(this.baseUrl + 'api/login',user,this.httpOptions);
     }
     
     storeUserData(token:any, user:User):void
@@ -68,7 +68,7 @@ export class RestDataSource
         this.user = null;
         localStorage.clear();
 
-        return this.http.get<any>(this.baseUrl +'logout', this.httpOptions);
+        return this.http.get<any>(this.baseUrl +'api/logout', this.httpOptions);
     }
 
 
