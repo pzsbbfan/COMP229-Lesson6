@@ -38,7 +38,7 @@ export class RestDataSource
 
     getBooks(): Observable<Book[]>
     {
-        return this.http.get<Book[]>(this.baseUrl + 'book-list');
+        return this.http.get<Book[]>(this.baseUrl + 'api/book-list');
     } 
 
 
